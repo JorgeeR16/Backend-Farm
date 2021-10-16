@@ -25,7 +25,7 @@ public class Finca {
 
     @ManyToOne
     @JoinColumn(name="idCategoria")
-    @JsonIgnoreProperties("category")
+    @JsonIgnoreProperties("farms")
     private Categoria category;
 
     public Long getId() {
