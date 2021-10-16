@@ -1,32 +1,32 @@
 package co.edu.usa.farm.entidad;
+import java.io.Serializable;
+import java.util.List;
 
-
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity 
-@Table(name="fincas")
-public class Finca {
-    
+@Table(name="categorias")
+public class Categoria implements Serializable{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idCategoria")
     private Long id;
-    private String address;
-    private Long extension;
     private String name;
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name="idCategoria")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "category")
     @JsonIgnoreProperties("category")
-    private Categoria category;
+    private List<Finca> farms;
 
     public Long getId() {
         return id;
@@ -34,22 +34,6 @@ public class Finca {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Long getExtension() {
-        return extension;
-    }
-
-    public void setExtension(Long extension) {
-        this.extension = extension;
     }
 
     public String getName() {
@@ -68,15 +52,14 @@ public class Finca {
         this.description = description;
     }
 
-    public Categoria getCategory() {
-        return category;
+    public List<Finca> getFarms() {
+        return farms;
     }
 
-    public void setCategory(Categoria categoria) {
-        this.category = categoria;
+    public void setFarms(List<Finca> farms) {
+        this.farms = farms;
     }
-
-
+    
 
 
 }
