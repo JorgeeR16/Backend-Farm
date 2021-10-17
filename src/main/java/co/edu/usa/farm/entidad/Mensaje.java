@@ -24,6 +24,13 @@ public class Mensaje {
     @JsonIgnoreProperties("messages")
     private Cliente client;
 
+
+        
+    @ManyToOne
+    @JoinColumn(name="id")
+    @JsonIgnoreProperties({"messages", "client"})
+    private Finca farm;
+
     public Long getIdMessage() {
         return idMessage;
     }
@@ -46,6 +53,14 @@ public class Mensaje {
 
     public void setClient(Cliente client) {
         this.client = client;
+    }
+
+    public Finca getFarm() {
+        return farm;
+    }
+
+    public void setFarm(Finca farm) {
+        this.farm = farm;
     }
 
     

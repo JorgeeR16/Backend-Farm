@@ -1,12 +1,16 @@
 package co.edu.usa.farm.entidad;
 
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -27,6 +31,10 @@ public class Finca {
     @JoinColumn(name="idCategoria")
     @JsonIgnoreProperties("farms")
     private Categoria category;
+
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "farm")
+    @JsonIgnoreProperties({"farm", "client"})
+    private List<Mensaje> messages;
 
     public Long getId() {
         return id;
@@ -74,6 +82,14 @@ public class Finca {
 
     public void setCategory(Categoria categoria) {
         this.category = categoria;
+    }
+
+    public List<Mensaje> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Mensaje> messages) {
+        this.messages = messages;
     }
 
 

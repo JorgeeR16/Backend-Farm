@@ -17,15 +17,15 @@ public class MensajeServicio {
         return Crudmensaje.getAll();
     }
     
-    public Optional<Mensaje> getFinca(Long idMensaje){
-        return  Crudmensaje.getFinca(idMensaje);
+    public Optional<Mensaje> getMensaje(Long idMensaje){
+        return  Crudmensaje.getMensaje(idMensaje);
     }
 
     public Mensaje save(Mensaje mensaje){
         if (mensaje.getIdMessage()==null) {
             return Crudmensaje.save(mensaje);
         } else {
-            Optional<Mensaje> evt=Crudmensaje.getFinca(mensaje.getIdMessage()); 
+            Optional<Mensaje> evt=Crudmensaje.getMensaje(mensaje.getIdMessage()); 
             if (evt.isEmpty()) {
                 return Crudmensaje.save(mensaje);
                 

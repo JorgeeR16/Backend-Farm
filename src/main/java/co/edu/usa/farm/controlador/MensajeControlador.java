@@ -32,8 +32,8 @@ public class MensajeControlador {
     }
 
     @GetMapping("/{id}")
-    public Optional<Mensaje> getFinca(@PathVariable("id") long id)    {
-        return mensajeServicio.getFinca(id);
+    public Optional<Mensaje> getMensaje(@PathVariable("id") long id)    {
+        return mensajeServicio.getMensaje(id);
     }
 
     @PostMapping("/save")

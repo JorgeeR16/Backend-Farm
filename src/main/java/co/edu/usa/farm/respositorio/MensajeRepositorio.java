@@ -18,12 +18,12 @@ public class MensajeRepositorio {
         return (List<Mensaje>)mensajeRepoitorio.findAll();
     }
 
-    public Optional<Mensaje> getFinca(Long idMensaje){
+    public Optional<Mensaje> getMensaje(Long idMensaje){
         return  mensajeRepoitorio.findById(idMensaje);
     }
 
-    public Mensaje save(Mensaje finca){
-        return mensajeRepoitorio.save(finca);
+    public Mensaje save(Mensaje mensaje){
+        return mensajeRepoitorio.save(mensaje);
     } 
     
 }
