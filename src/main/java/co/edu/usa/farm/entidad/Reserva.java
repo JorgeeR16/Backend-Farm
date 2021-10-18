@@ -2,6 +2,7 @@ package co.edu.usa.farm.entidad;
 
 
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity 
 @Table(name="reservaciones")
 
-public class Reserva {
+public class Reserva implements Serializable {
 
 
     @Id

@@ -1,4 +1,5 @@
 package co.edu.usa.farm.entidad;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity 
 @Table(name="Clientes")
-public class Cliente {
+public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
