@@ -22,9 +22,10 @@ public class Finca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private String address;
     private Long extension;
-    private String name;
+    
     private String description;
 
     @ManyToOne
@@ -39,7 +40,7 @@ public class Finca {
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "farm")
     @JsonIgnoreProperties({"farm", "client"})
     private List<Reserva> reservations;
-
+                          
     public Long getId() {
         return id;
     }
