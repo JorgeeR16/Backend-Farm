@@ -26,7 +26,7 @@ public class Mensaje {
 
     @ManyToOne
     @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties("messages")
+    @JsonIgnoreProperties({"messages","reservations"})
     private Cliente client;
 
 
