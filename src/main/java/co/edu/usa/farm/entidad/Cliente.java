@@ -29,6 +29,11 @@ public class Cliente {
     @JsonIgnoreProperties("client")
     private List<Mensaje>  messages;
 
+        
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="client")
+    @JsonIgnoreProperties("client")
+    public List<Reserva>reservations;
+
     public Long getIdClient() {
         return idClient;
     }
@@ -77,7 +82,14 @@ public class Cliente {
         this.messages = messages;
     }
 
+    public List<Reserva> getReservations() {
+        return reservations;
+    }
 
-    
-    
+    public void setReservations(List<Reserva> reservations) {
+        this.reservations = reservations;
+    }
+
+
+
 }

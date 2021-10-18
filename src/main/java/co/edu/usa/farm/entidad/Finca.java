@@ -36,6 +36,10 @@ public class Finca {
     @JsonIgnoreProperties({"farm", "client"})
     private List<Mensaje> messages;
 
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "farm")
+    @JsonIgnoreProperties({"farm", "client"})
+    private List<Reserva> reservations;
+
     public Long getId() {
         return id;
     }
@@ -80,8 +84,8 @@ public class Finca {
         return category;
     }
 
-    public void setCategory(Categoria categoria) {
-        this.category = categoria;
+    public void setCategory(Categoria category) {
+        this.category = category;
     }
 
     public List<Mensaje> getMessages() {
@@ -92,7 +96,12 @@ public class Finca {
         this.messages = messages;
     }
 
+    public List<Reserva> getReservations() {
+        return reservations;
+    }
 
-
-
+    public void setReservations(List<Reserva> reservations) {
+        this.reservations = reservations;
+    }
+    
 }

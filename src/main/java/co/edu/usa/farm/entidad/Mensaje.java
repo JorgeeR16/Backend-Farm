@@ -28,7 +28,7 @@ public class Mensaje {
         
     @ManyToOne
     @JoinColumn(name="id")
-    @JsonIgnoreProperties({"messages", "client"})
+    @JsonIgnoreProperties({"messages", "client","reservations"})
     private Finca farm;
 
     public Long getIdMessage() {
