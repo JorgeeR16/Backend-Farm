@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+//proyecto finca
 @Entity 
 @Table(name="fincas")
 public class Finca {

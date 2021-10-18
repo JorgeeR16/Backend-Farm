@@ -36,7 +36,7 @@ public class Reserva {
     @JoinColumn(name = "idClient")
     @JsonIgnoreProperties({"reservations","messages"})
     private Cliente client;
-    
+    private String score; //depende el grupo
 
     public Long getIdReservation() {
         return idReservation;
@@ -84,6 +84,14 @@ public class Reserva {
 
     public void setFarm(Finca farm) {
         this.farm = farm;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
     }
 
 }
