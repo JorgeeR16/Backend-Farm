@@ -36,5 +36,29 @@ public class CategoriaServicio {
             }     
         }
     }
+
+    public Categoria update(Categoria categoria){
+        if(categoria.getId()!=null){
+            Optional<Categoria>g=Crudcategoria.getCategoria(categoria.getId());
+            if(!g.isEmpty()){
+                if(categoria.getDescription()!=null){
+                    g.get().setDescription(categoria.getDescription());
+                }
+                if(categoria.getName()!=null){
+                    g.get().setName(categoria.getName());
+                }
+                return Crudcategoria.save(g.get());
+            }
+        }
+        return categoria;
+    }
+
+    public boolean delete(Long categoriaId){
+        Boolean d=getCategoria(categoriaId).map(categoria -> {
+            Crudcategoria.delete(categoria);
+            return true;
+        }).orElse(false);
+        return d;
+    }
     
 }

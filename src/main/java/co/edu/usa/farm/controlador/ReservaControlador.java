@@ -1,9 +1,8 @@
 package co.edu.usa.farm.controlador;
-
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,10 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 import co.edu.usa.farm.entidad.Reserva;
 import co.edu.usa.farm.servicio.ReservaServicio;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @RestController
 @RequestMapping("/api/Reservation")
-
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class ReservaControlador {
     @Autowired
     private ReservaServicio reservaServicio;
