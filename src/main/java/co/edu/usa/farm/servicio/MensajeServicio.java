@@ -34,5 +34,30 @@ public class MensajeServicio {
             }     
         }
     }
+
+    public Mensaje update(Mensaje message){
+        if(message.getIdMessage()!=null){
+            Optional<Mensaje> e= Crudmensaje.getMensaje(message.getIdMessage());
+            if(!e.isEmpty()){
+                if(message.getMessageText()!=null){
+                    e.get().setMessageText(message.getMessageText());
+                }
+                Crudmensaje.save(e.get());
+                return e.get();
+            }else{
+                return message;
+            }
+        }else{
+            return message;
+        }
+    }  
     
+    public boolean delete(Long messageId) {
+        Boolean aBoolean = getMensaje(messageId).map(message -> {
+            Crudmensaje.delete(message);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
 }
+

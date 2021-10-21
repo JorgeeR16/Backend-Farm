@@ -25,5 +25,9 @@ public class MensajeRepositorio {
     public Mensaje save(Mensaje mensaje){
         return mensajeRepoitorio.save(mensaje);
     } 
+
+    public void delete(Mensaje message){
+        mensajeRepoitorio.delete(message);
+    }
     
 }
