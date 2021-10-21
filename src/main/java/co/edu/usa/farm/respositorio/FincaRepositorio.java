@@ -22,5 +22,9 @@ public class FincaRepositorio {
 
     public Finca save(Finca finca){
         return fincaRepoitorio.save(finca);
-    }   
+    } 
+
+    public void delete(Finca farm){
+        fincaRepoitorio.delete(farm);
+    } 
 }
