@@ -34,4 +34,36 @@ public class ClienteServicio {
             }     
         }
     }
+
+    
+    public Cliente update(Cliente client){
+        if(client.getIdClient()!=null){
+            Optional<Cliente> e= Crudcliente.getCliente(client.getIdClient());
+            if(!e.isEmpty()){
+                if(client.getName()!=null){
+                    e.get().setName(client.getName());
+                }
+                if(client.getAge()!=null){
+                    e.get().setAge(client.getAge());
+                }
+                if(client.getPassword()!=null){
+                    e.get().setPassword(client.getPassword());
+                }
+                Crudcliente.save(e.get());
+                return e.get();
+            }else{
+                return client;
+            }
+        }else{
+            return client;
+        }
+    }
+
+    public boolean delete(Long clientId) {
+        Boolean aBoolean = getCliente(clientId).map(client -> {
+            Crudcliente.delete(client);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
 }

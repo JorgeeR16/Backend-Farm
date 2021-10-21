@@ -26,5 +26,9 @@ public class ClienteRepositorio {
     public Cliente save(Cliente f){
         return clienteRepoitorio.save(f);
     }   
+
+    public void delete(Cliente cliente){
+        clienteRepoitorio.delete(cliente);
+    }
     
 }
