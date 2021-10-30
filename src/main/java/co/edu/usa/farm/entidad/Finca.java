@@ -1,5 +1,8 @@
 package co.edu.usa.farm.entidad;
-
+/**
+ * 
+ * Se importan las librerias
+ */
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,32 +18,55 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-//proyecto finca
+/**
+ * se coloca la etiqueta Entity que nos indicara
+ * que que este archivo es el modelo y tambiens e encarga de realziar el modelo en la base de datos
+ */
 @Entity 
+/**
+ * Se utiliza la etiqueta table para generar las tablas
+ */
 @Table(name="fincas")
 public class Finca implements Serializable {
-    
+    /**
+     * Etiqueta par indicar la llave de la tabla
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /**
+     * Se construyen las filas de las tablas a travez de los atirbutos declarados
+     */
     private Long id;
     private String name;
     private String address;
-    private Long extension;
-    
+    private Long extension;    
     private String description;
 
+    /**
+     * se realiza la realcion con el modelo category
+     */
     @ManyToOne
     @JoinColumn(name="idCategoria")
     @JsonIgnoreProperties("farms")
     private Categoria category;
+    /**
+     * se realiza la realcion con el modelo message
+     */
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "farm")
     @JsonIgnoreProperties({"farm", "client"})
     private List<Mensaje> messages;
 
+    /**
+     * se realiza la realcion con el modelo reservations
+     */
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "farm")
     @JsonIgnoreProperties({"farm", "client"})
     private List<Reserva> reservations;
+
+    /**
+     * se generan los metodos accesores para los diferentes atributos de la tabla y su relaciones 
+     */
                           
     public Long getId() {
         return id;

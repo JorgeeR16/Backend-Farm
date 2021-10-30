@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
+
+import co.edu.usa.farm.Operacion.ContadorCliente;
+import co.edu.usa.farm.Operacion.StatusReserva;
 import co.edu.usa.farm.entidad.Reserva;
 import co.edu.usa.farm.servicio.ReservaServicio;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,6 +52,22 @@ public class ReservaControlador {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") Long reservationId) {
         return reservaServicio.delete(reservationId);
+    }
+
+    
+    @GetMapping("/report-status")
+    public StatusReserva getReservas(){
+        return reservaServicio.reporteStatusServicio();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reserva> getReservasTiempo (@PathVariable("dateOne")String dateOne, @PathVariable("dateTwo")String dateTwo ){
+        return reservaServicio.reporteTiempoServicio(dateOne, dateTwo);
+    }
+    
+    @GetMapping("/report-clients")
+    public List<ContadorCliente> getClientes(){
+        return reservaServicio.reporteClientesServicio();
     }
 }
 
